@@ -1,0 +1,44 @@
+[project]
+name = "table-auto-increment"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "guilherme",email = "guilherme-lopes58@hotmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi[standard] (>=0.116.1,<0.117.0)",
+    "openpyxl (>=3.1.5,<4.0.0)",
+    "selenium (>=4.35.0,<5.0.0)",
+    "webdriver-manager (>=4.0.2,<5.0.0)"
+]
+
+[tool.poetry]
+packages = [{include = "table_auto_increment", from = "src"}]
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.12.9"
+pytest = "^8.4.1"
+pytest-cov = "^6.2.1"
+
+[tool.ruff]
+line-length = 79
+extend-exclude = ['migrations']
+
+[tool.ruff.lint]
+preview = true
+select = ['I', 'F', 'E', 'W', 'PL', 'PT']
+
+[tool.ruff.format]
+preview = true
+quote-style = 'single'
+
+[tool.pytest.ini_options]
+pythonpath = "."
+addopts = '-p no:warnings'
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
